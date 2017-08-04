@@ -15,6 +15,8 @@
 		BE0D5C0C1F248FDE00EF1D61 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0D5C0B1F248FDE00EF1D61 /* Parser.swift */; };
 		BE0D5C0F1F249E0200EF1D61 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0D5C0D1F249E0200EF1D61 /* SWXMLHash.swift */; };
 		BE0D5C101F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0D5C0E1F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift */; };
+		BEF5CED11F27C31400AA92D3 /* PodCastDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5CECF1F27C31400AA92D3 /* PodCastDetailVC.swift */; };
+		BEF5CED41F27C58000AA92D3 /* MainSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5CED31F27C58000AA92D3 /* MainSplitVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		BE0D5C0B1F248FDE00EF1D61 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		BE0D5C0D1F249E0200EF1D61 /* SWXMLHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		BE0D5C0E1F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SWXMLHash+TypeConversion.swift"; sourceTree = "<group>"; };
+		BEF5CECF1F27C31400AA92D3 /* PodCastDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCastDetailVC.swift; sourceTree = "<group>"; };
+		BEF5CED31F27C58000AA92D3 /* MainSplitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +64,12 @@
 		BE0D5BF51F2453E200EF1D61 /* PodCastPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				BEF5CECE1F27C2FB00AA92D3 /* ViewControllers */,
 				BE0D5C111F249EC600EF1D61 /* SWXMLHash */,
 				BE0D5C0A1F248FD500EF1D61 /* Utils */,
-				BE0D5C081F246EA800EF1D61 /* PodCastListVC.swift */,
 				BE0D5BF61F2453E200EF1D61 /* AppDelegate.swift */,
-				BE0D5BFD1F2453E200EF1D61 /* Assets.xcassets */,
 				BE0D5BFF1F2453E200EF1D61 /* Main.storyboard */,
+				BE0D5BFD1F2453E200EF1D61 /* Assets.xcassets */,
 				BE0D5C021F2453E200EF1D61 /* Info.plist */,
 				BE0D5BFA1F2453E200EF1D61 /* PodCastPlayer.xcdatamodeld */,
 			);
@@ -87,6 +91,16 @@
 				BE0D5C0E1F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift */,
 			);
 			name = SWXMLHash;
+			sourceTree = "<group>";
+		};
+		BEF5CECE1F27C2FB00AA92D3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BEF5CED31F27C58000AA92D3 /* MainSplitVC.swift */,
+				BE0D5C081F246EA800EF1D61 /* PodCastListVC.swift */,
+				BEF5CECF1F27C31400AA92D3 /* PodCastDetailVC.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,10 +176,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0D5C0C1F248FDE00EF1D61 /* Parser.swift in Sources */,
+				BEF5CED11F27C31400AA92D3 /* PodCastDetailVC.swift in Sources */,
 				BE0D5C101F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift in Sources */,
 				BE0D5BF71F2453E200EF1D61 /* AppDelegate.swift in Sources */,
 				BE0D5C091F246EA800EF1D61 /* PodCastListVC.swift in Sources */,
 				BE0D5C0F1F249E0200EF1D61 /* SWXMLHash.swift in Sources */,
+				BEF5CED41F27C58000AA92D3 /* MainSplitVC.swift in Sources */,
 				BE0D5BFC1F2453E200EF1D61 /* PodCastPlayer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +339,7 @@
 				BE0D5C071F2453E200EF1D61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

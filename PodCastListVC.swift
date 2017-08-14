@@ -76,7 +76,9 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
         
         podcastDetailVC?.selectedPodcast = podcasts[tableView.selectedRow];
         
+        /*
         podcastDetailVC?.updateUI();
+        */
         
         
     }

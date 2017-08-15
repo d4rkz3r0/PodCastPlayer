@@ -756,7 +756,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="podcastListCell" id="h1j-p1-vxU">
+                                                        <tableCellView identifier="PodcastCell" id="h1j-p1-vxU">
                                                             <rect key="frame" x="1" y="1" width="195" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -893,7 +893,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="7hl-ph-970">
+                                                        <tableCellView identifier="EpisodeCell" id="7hl-ph-970">
                                                             <rect key="frame" x="1" y="1" width="712" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>

@@ -35,6 +35,41 @@ class Parser
         {
             podCastTuple.1 = "No Image URL"
         }
+        
         return podCastTuple;
+    }
+    
+    func getPodcastEpisodes(data: Data) -> [Episode]
+    {
+        let xmlData = SWXMLHash.parse(data);
+        
+        var episodes: [Episode] = [];
+        
+        for item in xmlData["rss"]["channel"]["item"].all
+        {
+            let episode = Episode();
+            
+            //Title
+            guard let vEpTitle = item["title"].element?.text else { print("Unable to retrieve episode title."); return []; }
+            episode.title = vEpTitle;
+            
+            //Description
+            guard let vEpDescription = item["description"].element?.text else { print("Unable to retrieve episode description."); return []; }
+            episode.htmlDescription = vEpDescription;
+            
+            //Audio URL
+            guard let vEpAudioURL = item["link"].element?.text else { print("Unable to retrieve episode audio URL."); return []; }
+            episode.audioURL = vEpAudioURL;
+            
+            //Publication Date
+            guard let vEpPublishDate = item["pubDate"].element?.text else { print("Unable to retrieve episode publication date."); return []; }
+            guard let formattedPublishDate = Episode.formatter.date(from: vEpPublishDate) else { return []; }
+            episode.publicationDate = formattedPublishDate;
+            
+            //Add Episode
+            episodes.append(episode);
+        }
+
+        return episodes;
     }
 }

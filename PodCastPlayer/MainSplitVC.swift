@@ -12,7 +12,6 @@ class MainSplitVC: NSSplitViewController
 {
 
     //MARK: IBOulets
-    
     @IBOutlet weak var podcastListItem: NSSplitViewItem!
     @IBOutlet weak var podcastDetailItem: NSSplitViewItem!
     
@@ -25,7 +24,6 @@ class MainSplitVC: NSSplitViewController
         guard let podCastDetailVC = podcastDetailItem.viewController as? PodCastDetailVC else { print("2nd Split Item does not have a VC in it."); return; }
         
         podCastListVC.podcastDetailVC = podCastDetailVC;
-        
+        podCastDetailVC.podcastListVC = podCastListVC;
     }
-    
 }

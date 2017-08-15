@@ -47,13 +47,13 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
             
             
             self.getPodcastsFromCoreData();
+            
+            DispatchQueue.main.async { self.clearUI(); } 
 
             }.resume();
-        
-        clearUI();
     }
     
-    //MARK: TableView Functions
+    //MARK: TableView Delegate Functions
     func numberOfRows(in tableView: NSTableView) -> Int
     {
         return podcasts.count;
@@ -62,7 +62,7 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        let cell = tableView.make(withIdentifier: "podcastListCell", owner: self) as? NSTableCellView
+        let cell = tableView.make(withIdentifier: podCastCellIdentifier, owner: self) as? NSTableCellView
         
         guard let podcastTitle = podcasts[row].title else {print("Unable to pull podcast title"); return nil; }
         cell?.textField?.stringValue = podcastTitle;
@@ -76,11 +76,7 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
         
         podcastDetailVC?.selectedPodcast = podcasts[tableView.selectedRow];
         
-        /*
         podcastDetailVC?.updateUI();
-        */
-        
-        
     }
 
     
@@ -117,12 +113,7 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
     
     
     //MARK: Helper Functions
-    func clearUI()
-    {
-        podcastURLTextField.stringValue = "";
-    }
-    
-    func isPodcastAlreadyAdded(podcastRSSURL: String) -> Bool
+    private func isPodcastAlreadyAdded(podcastRSSURL: String) -> Bool
     {
         guard let managedContext = (NSApplication.shared().delegate as? AppDelegate)?.persistentContainer.viewContext else { print("No Context"); return false; }
         
@@ -146,5 +137,8 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
         return false;
     }
     
-
+    private func clearUI()
+    {
+        podcastURLTextField.stringValue = "";
+    }
 }

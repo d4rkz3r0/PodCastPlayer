@@ -15,6 +15,7 @@ class PodCastDetailVC: NSViewController
     //MARK: IBOutlets
     @IBOutlet weak var podCastTitle: NSTextField!
     @IBOutlet weak var podCastImageView: NSImageView!
+    @IBOutlet weak var deleteButton: NSButton!
     @IBOutlet weak var mediaControlButton: NSButton!
     @IBOutlet weak var tableView: NSTableView!
     
@@ -27,11 +28,13 @@ class PodCastDetailVC: NSViewController
     
     //Player
     var audioPlayer: AVPlayer? = nil;
+    var isAudioPlaying: Bool = false;
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        clearUI();
        
     }
     
@@ -51,6 +54,17 @@ class PodCastDetailVC: NSViewController
         let podcastImage = NSImage(byReferencing: vImageURL);
         podCastImageView.image = podcastImage;
         
+        //UI Elems
+        if selectedPodcast != nil
+        {
+            tableView.isHidden = false;
+            deleteButton.isHidden = false;
+        }
+        else
+        {
+            tableView.isHidden = true;
+            deleteButton.isHidden = true;
+        }
         mediaControlButton.isHidden = true;
         
         updateEpisodesList();
@@ -79,10 +93,12 @@ class PodCastDetailVC: NSViewController
     
     func clearUI()
     {
-        selectedPodcast = nil;
+        tableView.isHidden = true;
+        deleteButton.isHidden = true;
+        mediaControlButton.isHidden = true;
+
         podCastTitle.stringValue = "";
         podCastImageView.image = nil;
-        
     }
     
     //MARK: IBActions
@@ -97,12 +113,26 @@ class PodCastDetailVC: NSViewController
         (NSApplication.shared().delegate as? AppDelegate)?.saveAction(nil);
         //Update TableView
         podcastListVC?.getPodcastsFromCoreData();
+        
+        selectedPodcast = nil;
         clearUI();
     }
     
     @IBAction func mediaControlButtonPressed(_ sender: Any)
     {
-        
+        if (isAudioPlaying)
+        {
+            isAudioPlaying = !isAudioPlaying;
+            audioPlayer?.pause();
+            mediaControlButton.title = "Play";
+            
+        }
+        else
+        {
+            isAudioPlaying = !isAudioPlaying;
+            audioPlayer?.play();
+            mediaControlButton.title = "Pause";
+        }
     }
 }
 
@@ -113,11 +143,16 @@ extension PodCastDetailVC: NSTableViewDelegate, NSTableViewDataSource
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        let cell = tableView.make(withIdentifier: episodeCellIdentifier, owner: self) as? NSTableCellView;
+        let cell = tableView.make(withIdentifier: episodeCellIdentifier, owner: self) as? EpisodeCell;
         
         let episode = episodes[row];
-        cell?.textField?.stringValue = episode.title;
+        cell?.episodeTitle.stringValue = episode.title;
+        cell?.episodeDate.stringValue = episode.publicationDate.description;
+        cell?.episodeDescWebView.loadHTMLString(episode.htmlDescription, baseURL: nil);
         
+        let dateFormatter = DateFormatter();
+        dateFormatter.dateFormat = "MMM d, yyyy";
+        cell?.episodeDate.stringValue = dateFormatter.string(from: episode.publicationDate);
     
         return cell;
     }
@@ -127,16 +162,23 @@ extension PodCastDetailVC: NSTableViewDelegate, NSTableViewDataSource
         guard tableView.selectedRow >= 0 else { return; }
         
         let episodeAudioURL_Str = episodes[tableView.selectedRow].audioURL;
-        
         guard let vEpisodeAudioURL = URL(string: episodeAudioURL_Str) else { print("URL Creation failed."); return; }
         
+        //Previous Audio Stream
+        audioPlayer?.pause();
+        audioPlayer = nil;
         
-        //Initialize AVPlayer
+        //New Audio Stream
         audioPlayer = AVPlayer(url: vEpisodeAudioURL);
         audioPlayer?.play();
         
-        
-        
+        isAudioPlaying = true;
+        mediaControlButton.isHidden = false;
+        mediaControlButton.title = "Pause";
     }
     
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat
+    {
+        return CGFloat(120.0);
+    }
 }

@@ -23,7 +23,7 @@ class Parser
         }
         else
         {
-            podCastTuple.0 = "No Title Info";
+            podCastTuple.0 = "Invalid RSS URL, try again.";
         }
         
         //Image URL
@@ -58,7 +58,7 @@ class Parser
             episode.htmlDescription = vEpDescription;
             
             //Audio URL
-            guard let vEpAudioURL = item["link"].element?.text else { print("Unable to retrieve episode audio URL."); return []; }
+            guard let vEpAudioURL = item["enclosure"].element?.attribute(by: "url")?.text else { print("Unable to retrieve episode audio URL."); return []; }
             episode.audioURL = vEpAudioURL;
             
             //Publication Date

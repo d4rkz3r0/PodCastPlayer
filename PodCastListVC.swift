@@ -127,7 +127,7 @@ class PodCastListVC: NSViewController, NSTableViewDelegate, NSTableViewDataSourc
             let matchingPodcasts = try managedContext.fetch(uniqueNamedPodCastFetchRequest);
             
             //There's already one with the same name.
-            guard matchingPodcasts.count >= 1 else { print("No PodCasts"); return false; }
+            guard matchingPodcasts.count >= 1 else { return false; }
             return true;
             
         } catch {}

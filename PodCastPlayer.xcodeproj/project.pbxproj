@@ -17,6 +17,7 @@
 		BE0D5C101F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0D5C0E1F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift */; };
 		BE1EA3521F42EEA00029B223 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1EA3511F42EEA00029B223 /* Episode.swift */; };
 		BE1EA3551F4320710029B223 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1EA3541F4320710029B223 /* Constants.swift */; };
+		BE4518A71F433338001E4B36 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4518A61F433338001E4B36 /* EpisodeCell.swift */; };
 		BEF5CED11F27C31400AA92D3 /* PodCastDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5CECF1F27C31400AA92D3 /* PodCastDetailVC.swift */; };
 		BEF5CED41F27C58000AA92D3 /* MainSplitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5CED31F27C58000AA92D3 /* MainSplitVC.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		BE0D5C0E1F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SWXMLHash+TypeConversion.swift"; sourceTree = "<group>"; };
 		BE1EA3511F42EEA00029B223 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		BE1EA3541F4320710029B223 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BE4518A61F433338001E4B36 /* EpisodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		BEF5CECF1F27C31400AA92D3 /* PodCastDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodCastDetailVC.swift; sourceTree = "<group>"; };
 		BEF5CED31F27C58000AA92D3 /* MainSplitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSplitVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 		BE1EA3531F431E220029B223 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE4518A61F433338001E4B36 /* EpisodeCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				BE0D5C0C1F248FDE00EF1D61 /* Parser.swift in Sources */,
 				BEF5CED11F27C31400AA92D3 /* PodCastDetailVC.swift in Sources */,
 				BE0D5C101F249E0200EF1D61 /* SWXMLHash+TypeConversion.swift in Sources */,
+				BE4518A71F433338001E4B36 /* EpisodeCell.swift in Sources */,
 				BE0D5BF71F2453E200EF1D61 /* AppDelegate.swift in Sources */,
 				BE0D5C091F246EA800EF1D61 /* PodCastListVC.swift in Sources */,
 				BE1EA3551F4320710029B223 /* Constants.swift in Sources */,
